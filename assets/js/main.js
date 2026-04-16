@@ -252,8 +252,10 @@
         const header = document.querySelector('.site-header');
         if (!header) return;
         const onScroll = () => {
-            if (window.scrollY > 40) header.style.background = 'rgba(5, 6, 8, 0.92)';
-            else header.style.background = 'rgba(5, 6, 8, 0.72)';
+            const styles = getComputedStyle(document.documentElement);
+            header.style.background = window.scrollY > 40
+                ? styles.getPropertyValue('--header-bg-scroll').trim()
+                : styles.getPropertyValue('--header-bg').trim();
         };
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
