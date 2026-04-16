@@ -1,6 +1,12 @@
 (function () {
     'use strict';
 
+    // ---------- Video IDs per language ----------
+    const videoIds = {
+        fr: 'mD2wGZGhnr8',
+        en: 'T4KRiXgyziA'
+    };
+
     // ---------- Translations ----------
     const translations = {
         fr: {
@@ -177,6 +183,21 @@
         document.title = lang === 'en'
             ? 'Rayops — High-power lasers on robotic platforms'
             : 'Rayops — Lasers de puissance sur plateformes robotisées';
+
+        const videoId = videoIds[lang];
+        const thumbLink = document.getElementById('videoThumb');
+        const thumbImg = document.getElementById('videoThumbImg');
+        if (videoId && thumbLink && thumbImg) {
+            thumbLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+            thumbLink.setAttribute('aria-label', lang === 'en'
+                ? 'Watch the Rayops presentation video on YouTube'
+                : 'Voir la vidéo de présentation Rayops sur YouTube');
+            thumbImg.onerror = function () {
+                thumbImg.onerror = null;
+                thumbImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+            };
+            thumbImg.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        }
     }
 
     function initLang() {
