@@ -58,16 +58,18 @@ a:hover { color: var(--accent-soft); }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 72px;
+    height: 96px;
     gap: 2rem;
 }
 
-.logo-link { flex-shrink: 0; }
+.logo-link { flex-shrink: 0; display: inline-flex; }
 .logo {
-    height: 34px;
+    height: 56px;
     width: auto;
     filter: invert(1) brightness(1.1);
+    transition: transform .25s ease;
 }
+.logo-link:hover .logo { transform: scale(1.03); }
 
 .main-nav {
     display: flex;
@@ -272,43 +274,6 @@ h1 {
 .btn-ghost:hover {
     border-color: var(--accent);
     color: var(--text);
-}
-
-.hero-scroll {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: .75rem;
-    font-family: var(--font-display);
-    font-size: .75rem;
-    letter-spacing: .3em;
-    color: var(--text-mute);
-    text-transform: uppercase;
-}
-
-.scroll-line {
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(180deg, var(--accent), transparent);
-    position: relative;
-    overflow: hidden;
-}
-.scroll-line::after {
-    content: '';
-    position: absolute;
-    top: -50%; left: 0;
-    width: 100%; height: 50%;
-    background: var(--accent);
-    animation: scrollPulse 2s ease-in-out infinite;
-}
-@keyframes scrollPulse {
-    0% { top: -50%; }
-    100% { top: 100%; }
 }
 
 /* ---------- SECTIONS ---------- */
@@ -619,7 +584,7 @@ h3 {
 }
 
 .footer-logo {
-    height: 28px;
+    height: 48px;
     filter: invert(1) brightness(1.1);
 }
 
@@ -646,7 +611,7 @@ h3 {
 @media (max-width: 900px) {
     .main-nav {
         position: fixed;
-        top: 72px; left: 0; right: 0;
+        top: 96px; left: 0; right: 0;
         flex-direction: column;
         background: var(--bg-2);
         border-bottom: 1px solid var(--border);
@@ -667,13 +632,13 @@ h3 {
 }
 
 @media (max-width: 600px) {
-    .hero { padding: 100px 0 60px; min-height: auto; }
-    .hero-scroll { display: none; }
+    .hero { padding: 120px 0 60px; min-height: auto; }
     .hero-cta { flex-direction: column; align-items: stretch; }
     .btn { justify-content: center; }
-    .logo { height: 28px; }
-    .header-inner { height: 64px; }
-    .main-nav { top: 64px; }
+    .logo { height: 42px; }
+    .header-inner { height: 80px; }
+    .main-nav { top: 80px; }
+    .footer-logo { height: 40px; }
     .contact-actions { flex-direction: column; }
 }
 

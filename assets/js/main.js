@@ -16,7 +16,6 @@
             hero_lead: "Rayops développe des solutions d'usinage laser de nouvelle génération, intégrées à des plateformes robotisées terrestres, aériennes et navales — pour la défense, la sécurité et au-delà.",
             hero_cta_primary: "Découvrir la technologie",
             hero_cta_secondary: "Nous contacter",
-            scroll: "Défiler",
 
             mission_eyebrow: "Notre mission",
             mission_title: "Sortir les lasers des laboratoires.",
@@ -89,7 +88,6 @@
             hero_lead: "Rayops develops next-generation laser machining solutions, integrated on land, aerial and naval robotic platforms — for defense, security and beyond.",
             hero_cta_primary: "Discover the technology",
             hero_cta_secondary: "Get in touch",
-            scroll: "Scroll",
 
             mission_eyebrow: "Our mission",
             mission_title: "Taking lasers out of the lab.",
