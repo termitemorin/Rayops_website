@@ -386,8 +386,9 @@ h3 {
 .feature p { color: var(--text-dim); font-size: .95rem; }
 
 /* ---------- VIDEO ---------- */
-.video-wrap {
+.video-thumb {
     position: relative;
+    display: block;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
@@ -397,15 +398,83 @@ h3 {
     background: #000;
     border: 1px solid var(--border);
     box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 60px rgba(227,6,19,.15);
+    cursor: pointer;
+    isolation: isolate;
 }
 
-.video-wrap iframe,
-.video-wrap video {
+.video-thumb img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    border: 0;
+    object-fit: cover;
+    transition: transform .6s ease, filter .3s ease;
+    filter: brightness(.78) saturate(1.05);
+}
+
+.video-thumb-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at center, rgba(0,0,0,.1) 0%, rgba(0,0,0,.55) 100%),
+        linear-gradient(180deg, transparent 60%, rgba(5,6,8,.75) 100%);
+    transition: opacity .3s ease;
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: clamp(80px, 12vw, 112px);
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,.55));
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), filter .3s ease;
+    pointer-events: none;
+}
+
+.play-btn svg { width: 100%; height: auto; display: block; }
+.play-btn svg path { transition: fill .2s ease; }
+
+.video-thumb-label {
+    position: absolute;
+    left: 50%;
+    bottom: 1.25rem;
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: .9rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: .6rem 1.25rem;
+    background: rgba(0,0,0,.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: var(--radius);
+    white-space: nowrap;
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.video-thumb:hover img {
+    transform: scale(1.04);
+    filter: brightness(.9) saturate(1.1);
+}
+.video-thumb:hover .play-btn {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+.video-thumb:hover .play-btn svg path { fill: #ff2d3a; }
+.video-thumb:hover .video-thumb-label {
+    background: rgba(227, 6, 19, 0.85);
+    border-color: rgba(255,255,255,.3);
+}
+
+.video-thumb:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
 }
 
 /* ---------- APPLICATIONS ---------- */

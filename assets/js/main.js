@@ -36,6 +36,7 @@
 
             video_eyebrow: "Présentation",
             video_title: "De la recherche au terrain.",
+            video_cta: "Regarder sur YouTube",
 
             apps_eyebrow: "Applications",
             apps_title: "Défense, sécurité — et bien au-delà.",
@@ -108,6 +109,7 @@
 
             video_eyebrow: "Presentation",
             video_title: "From research to the field.",
+            video_cta: "Watch on YouTube",
 
             apps_eyebrow: "Applications",
             apps_title: "Defense, security — and far beyond.",
@@ -221,7 +223,7 @@
 
     // ---------- Fade-in on scroll ----------
     function initReveal() {
-        const targets = document.querySelectorAll('.section-head, .feature, .app-card, .vision-inner, .ceo-card, .contact-inner, .video-wrap, .text-block');
+        const targets = document.querySelectorAll('.section-head, .feature, .app-card, .vision-inner, .ceo-card, .contact-inner, .video-thumb, .text-block');
         targets.forEach(el => el.classList.add('fade-in'));
 
         if (!('IntersectionObserver' in window)) {
