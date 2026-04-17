@@ -49,7 +49,7 @@ a:hover { color: var(--accent-soft); }
 .site-header {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 1000;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     background: var(--header-bg);
@@ -154,6 +154,7 @@ a:hover { color: var(--accent-soft); }
 .hero {
     position: relative;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     padding: 120px 0 80px;
@@ -679,20 +680,32 @@ h3 {
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
+    .header-inner { gap: 1rem; height: 72px; }
+    .logo { height: 40px; }
+
     .main-nav {
         position: fixed;
-        top: 96px; left: 0; right: 0;
+        top: 72px; left: 0; right: 0;
         flex-direction: column;
         background: var(--brand-red-deep);
         border-bottom: 1px solid rgba(227, 6, 19, 0.3);
-        padding: 1.5rem clamp(1.25rem, 3vw, 2.5rem);
+        padding: 1.25rem clamp(1.25rem, 3vw, 2.5rem) 1.5rem;
         gap: 1.25rem;
         transform: translateY(-110%);
-        transition: transform .3s ease;
+        transition: transform .3s ease, visibility .3s ease;
         justify-content: flex-start;
+        visibility: hidden;
+        z-index: 999;
+        max-height: calc(100vh - 72px);
+        max-height: calc(100svh - 72px);
+        overflow-y: auto;
     }
-    .main-nav.open { transform: translateY(0); }
-    .main-nav a { font-size: 1rem; }
+    .main-nav.open {
+        transform: translateY(0);
+        visibility: visible;
+    }
+    .main-nav a { font-size: 1rem; padding: .25rem 0; }
+    .main-nav a::after { display: none; }
     .menu-toggle { display: flex; }
 
     .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
@@ -702,12 +715,18 @@ h3 {
 }
 
 @media (max-width: 600px) {
-    .hero { padding: 120px 0 60px; min-height: auto; }
+    .header-inner { height: 64px; gap: .5rem; }
+    .logo { height: 36px; }
+    .main-nav { top: 64px; max-height: calc(100vh - 64px); max-height: calc(100svh - 64px); }
+
+    .lang-toggle { padding: .35rem .55rem; font-size: .8rem; }
+    .header-actions { gap: .5rem; }
+
+    .hero { padding: 96px 0 56px; }
+    .hero-content { padding-top: 1rem; }
     .hero-cta { flex-direction: column; align-items: stretch; }
     .btn { justify-content: center; }
-    .logo { height: 42px; }
-    .header-inner { height: 80px; }
-    .main-nav { top: 80px; }
+
     .footer-logo { height: 40px; }
     .contact-actions { flex-direction: column; }
 }
